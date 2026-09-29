@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "QR Box Reader",
+  "version": "1.0",
+  "description": "Draw a box around a QR code on the page and read its URL.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["http://localhost:5000/*"],
+  "action": { "default_title": "Scan a QR code" },
+  "background": { "service_worker": "background.js" }
+}
