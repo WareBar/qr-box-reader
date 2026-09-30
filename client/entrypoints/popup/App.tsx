@@ -113,6 +113,15 @@ export default function App() {
         </a>
       </p>
       <p className="text-[11px] text-neutral-400">Press Esc to cancel while selecting.</p>
+      <button
+        onClick={() => {
+          void browser.tabs.create({ url: browser.runtime.getURL("/onboarding.html") });
+          window.close();
+        }}
+        className="text-[11px] font-medium text-blue-600 hover:underline"
+      >
+        Setup guide &amp; troubleshooting
+      </button>
     </div>
 
     </div>

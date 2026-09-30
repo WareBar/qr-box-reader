@@ -3,6 +3,12 @@ import type { Rect } from "~/utils/selectRegion";
 const DECODE_URL = `${import.meta.env.WXT_SERVER_URL}/decode`;
 
 export default defineBackground(() => {
+  // main() must stay synchronous, so the work happens inside the listener.
+  browser.runtime.onInstalled.addListener((details) => {
+    if (details.reason !== "install") return; // not on update, so it opens once
+    void browser.tabs.create({ url: browser.runtime.getURL("/onboarding.html") });
+  });
+
   browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type !== "scan") return;
 
